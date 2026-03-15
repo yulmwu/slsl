@@ -8,7 +8,7 @@ int main()
     struct bpf_program *prog;
     struct bpf_link *link;
 
-    obj = bpf_object__open_file("hello.ebpf.o", NULL);
+    obj = bpf_object__open_file("test.ebpf.o", NULL);
     if (!obj) {
         printf("failed to open bpf object\n");
         return 1;
@@ -19,7 +19,7 @@ int main()
         return 1;
     }
 
-    prog = bpf_object__find_program_by_name(obj, "hello");
+    prog = bpf_object__find_program_by_name(obj, "foo");
     if (!prog) {
         printf("failed to find program\n");
         return 1;
