@@ -8,7 +8,7 @@ int main()
     struct bpf_program *prog;
     struct bpf_link *link;
 
-    obj = bpf_object__open_file("hello.bpf.o", NULL);
+    obj = bpf_object__open_file("hello.ebpf.o", NULL);
     if (!obj) {
         printf("failed to open bpf object\n");
         return 1;

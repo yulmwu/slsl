@@ -8,14 +8,14 @@ BPF_CFLAGS := -O2 -g -target bpf $(INCLUDES)
 USER_CFLAGS := -O2 -g
 LIBS := -lbpf -lelf
 
-TARGET := hello
+TARGET := test
 
 all: $(TARGET)
 
-$(TARGET).bpf.o: $(TARGET).bpf.c
+$(TARGET).ebpf.o: $(TARGET).ebpf.c
 	$(BPF_CLANG) $(BPF_CFLAGS) -c $< -o $@
 
-$(TARGET): $(TARGET).c $(TARGET).bpf.o
+$(TARGET): $(TARGET).c $(TARGET).ebpf.o
 	$(CLANG) $(USER_CFLAGS) $< -o $@ $(LIBS)
 
 clean:
